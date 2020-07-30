@@ -1,0 +1,14 @@
+{
+  "projects": {
+    "default": "dnd-notes-5325f"
+  },
+  "targets": {
+    "dnd-notes-5325f": {
+      "hosting": {
+        "dnd-notes": [
+          "dnd-notes-5325f"
+        ]
+      }
+    }
+  }
+}

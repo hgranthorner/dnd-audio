@@ -3,7 +3,17 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  firebase: {
+    apiKey: "AIzaSyC1IxUJ-gIhoD5KYajMyLYW3op_fyQfMe8",
+    authDomain: "dnd-notes-5325f.firebaseapp.com",
+    databaseURL: "https://dnd-notes-5325f.firebaseio.com",
+    projectId: "dnd-notes-5325f",
+    storageBucket: "dnd-notes-5325f.appspot.com",
+    messagingSenderId: "48914991153",
+    appId: "1:48914991153:web:d33a6d58c6ab4093baad10",
+    measurementId: "G-Z28NYHZ5KY"
+  }
 };
 
 /*
