@@ -5,3 +5,8 @@ export type Note = {
   type: string
   value: string
 }
+
+export type State = {
+  key: string
+  currentTrack: string
+}

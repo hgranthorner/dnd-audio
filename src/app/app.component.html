@@ -1,20 +1,37 @@
 <div *ngIf="user$ | async as user; else showLogin">
-  <h1>Hello {{ user.displayName }}!</h1>
-  <button (click)="logout()">Logout</button>
-  <ng-container *ngIf="data$ | async as data">
-    <div *ngFor="let d of data">{{ d.arc }}</div>
-  </ng-container>
-  <input type="file" (change)="uploadFile($event)" />
-  <div *ngIf="uploadPercent$ | async as p">
-    <ng-container *ngIf="p !== 100">
-      {{ uploadPercent$ | async | number }}%
+  <ng-container *ngIf="fire.state$ | async as state">
+    <h1>Hello {{ user.displayName }}!</h1>
+    <button (click)="logout()">Logout</button>
+    <h1>{{ state.key }}</h1>
+    <ng-container *ngIf="fire.data$ | async as data">
+      <div *ngFor="let d of data">{{ d.arc }}</div>
     </ng-container>
-  </div>
-  <ul *ngIf="filesRefs$ | async as files">
-    <li *ngFor="let file of files">{{file.ref}}</li>
-  </ul>
-  <ng-container *ngIf="img$ | async as src">
-    <img [src]="src" alt="">
+    <ng-container *ngIf="currentTrack$ | async as track">
+      <ng-container *ngIf="track !== 'pause'">
+        <audio
+          loop
+          controls
+          preload
+          autoplay
+          [src]="track"
+          type="audio/mpeg"
+        ></audio>
+      </ng-container>
+      <button (click)="stopMusic()">PAUSE</button>
+      <br />
+    </ng-container>
+
+    <input type="file" (change)="uploadFile($event)" />
+    <div *ngIf="uploadPercent$ | async as p">
+      <ng-container *ngIf="p !== 100">
+        {{ uploadPercent$ | async | number }}%
+      </ng-container>
+    </div>
+    <ul *ngIf="fire.tracks$ | async as files">
+      <li *ngFor="let file of files">
+        {{ file.ref }}: <button (click)="setCurrentTrack(file)">PLAY</button>
+      </li>
+    </ul>
   </ng-container>
 </div>
 <ng-template #showLogin>
